@@ -111,7 +111,7 @@ eXide.edit.Outline = (function () {
             var outline = d3.select("#outline"),
                   sel = outline.selectAll("li")
                     .data(doc.functions, function(d) {
-                    return d.signature
+                    return d.sort
                     });
                     
             function stringCompare(a, b) {
@@ -119,7 +119,6 @@ eXide.edit.Outline = (function () {
                 b = b.toLowerCase();
                 return a > b ? 1 : a == b ? 0 : -1;
             }   
-           //sel.sort(function (a, b) { return a == null || b == null ? -1  : stringCompare(a.signature, b.signature); }); 
            var li = sel.enter()
                 .append("li")
                     .attr("class", function(d) {
@@ -163,7 +162,7 @@ eXide.edit.Outline = (function () {
                     .duration(400)
                     .style("opacity",0)
                     .remove()
-            sel.sort(function (a, b) { return a == null || b == null ? -1  : stringCompare(a.signature, b.signature); });
+            sel.sort(function (a, b) { return a == null || b == null ? -1  : stringCompare(a.sort, b.sort); });
             
             //sel.sort(function (a, b) { return a == null || b == null ? -1  : stringCompare(a.name, b.name); });          
    /*         var ul = $("#outline");
